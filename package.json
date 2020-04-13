@@ -1,0 +1,38 @@
+{
+  "name": "sync-offline-actions",
+  "version": "2.2.0",
+  "description": "Library to synchronize actions with backend when the connection is restored",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "compile": "babel -d lib/ src/ --ignore '**/test.js'",
+    "prepublishOnly": "npm run compile",
+    "lint": "eslint src",
+    "lint-fix": "eslint src --fix",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\.js$ | xargs eslint",
+    "precommit": "npm run lint-diff"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felire/sync-offline-actions"
+  },
+  "keywords": [
+    "redux",
+    "switch"
+  ],
+  "author": "felire",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felire/sync-offline-actions/issues"
+  },
+  "homepage": "https://github.com/felire/sync-offline-actions#readme",
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.9.0",
+    "@react-native-community/netinfo": "^5.7.0",
+    "react-redux": "^7.1",
+    "redux": "^4.0.1"
+  }
+}
