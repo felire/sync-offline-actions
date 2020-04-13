@@ -2,6 +2,27 @@ import React, { Component } from "react";
 import NetInfo from "@react-native-community/netinfo";
 import { connect } from "react-redux";
 
+import { getItems, removeAll } from "../services/offlineActions";
+const restoreActions = async (actions) => {
+  const pendingActions = await getItems();
+  if (pendingActions.length === 0) return;
+  const actionsToDispatch = actions
+    .filter((action) => action.generalCondition())
+    .map((action) => action.actions)
+    .flat()
+    .map((action) => {
+      const offlineActionsForThisAction = pendingActions.filter(
+        (offlineAction) => action.name === offlineAction.name
+      );
+      return {
+        ...action,
+        arguments: offlineActionsForThisAction.map((action) => action.data),
+      };
+    });
+  actionsToDispatch.forEach((action) =>
+    dispatch(action.associatedAction(...action.arguments))
+  );
+};
 const restoreConnectionActions = (actions = []) => (WrappedComponent) => {
   class RestoreConnectionComponent extends Component {
     state = {
