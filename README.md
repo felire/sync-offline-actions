@@ -116,7 +116,7 @@ This tools are a plus for this library, but they are not related with the real f
 This is a HOC to ask for the state of the connection. Here is an example of using:
 
 ```
-import { withNetInfo } from 'sync-offline-actions';
+<import { withNetInfo } from 'sync-offline-actions';
 
 class SomeComponent extends Component{
  /*some code*/
@@ -126,7 +126,7 @@ class SomeComponent extends Component{
  }
 }
 
-export default withNetInfo(SomeComponent);
+export default withNetInfo(SomeComponent);>
 ```
 
 The prop `isConnected` will be injected as a prop of `SomeComponent` because of the HOC withNetInfo, the prop will be updated with the network changes.
