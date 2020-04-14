@@ -10,4 +10,4 @@ export const addItem = async item => {
   return Promise.resolve(newItems);
 };
 
-export const removeAll = async () => AsyncStorage.setItem(ACTIONS_KEY, null);
+export const removeAll = async () => AsyncStorage.removeItem(ACTIONS_KEY);

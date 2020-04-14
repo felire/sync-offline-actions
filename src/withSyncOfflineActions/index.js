@@ -21,7 +21,9 @@ const restoreActions = async (actions, dispatch) => {
         arguments: offlineActionsForThisAction.map(offlineAction => offlineAction.data)
       };
     });
-  actionsToDispatch.forEach(action => dispatch(action.associatedAction(...action.arguments)));
+  actionsToDispatch.forEach(action => {
+    action.arguments.forEach(argumentsList => dispatch(action.associatedAction(...argumentsList)));
+  });
   await removeAll();
 };
 
