@@ -14,7 +14,9 @@ The best part of this, it's that this library is very easy of using.
 ### Requirements
 
 `redux`
+
 `react-redux`
+
 `@react-native-community/netinfo` -> You will have to install this library before, here are the steps: [Net Info](https://github.com/react-native-community/react-native-netinfo)
 
 ### Install the library
@@ -107,11 +109,42 @@ The second argument will be an array of `arguments`, when the connection be rest
 
 ### More tools
 
+This tools are a plus for this library, but they are not related with the real functionality of this, they could help you to make your work easier.
+
 #### withNetInfo
 
-This is a HOC
+This is a HOC to ask for the state of the connection. Here is an example of using:
+
+```
+import { RestoreOfflineActions } from 'sync-offline-actions';
+
+class SomeComponent extends Component{
+ /*some code*/
+ someMethod = () => {
+  const { isConnected } = this.props;
+  /*Do something*/
+ }
+}
+
+export default withNetInfo(SomeComponent);
+```
+
+The prop `isConnected` will be injected as a prop of `SomeComponent` because of the HOC withNetInfo, the prop will be updated with the network changes.
 
 #### netInfo
+
+This is a CustomHook with the same functionality of `withNetInfo`, example of using:
+
+```
+import { netInfo } from 'sync-offline-actions';
+
+const SomeFunction = () => {
+ const isConnected = netInfo();
+ // More of the function
+}
+```
+
+Then, isConnected will be updated with the last changes of the connection.
 
 ## Thanks to
 
