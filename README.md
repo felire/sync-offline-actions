@@ -116,7 +116,7 @@ This tools are a plus for this library, but they are not related with the real f
 This is a HOC to ask for the state of the connection. Here is an example of using:
 
 ```
-import { RestoreOfflineActions } from 'sync-offline-actions';
+import { withNetInfo } from 'sync-offline-actions';
 
 class SomeComponent extends Component{
  /*some code*/
