@@ -40,7 +40,7 @@ We provide four tools so you can handle the behaviour of your project. Those are
 This is a component, that you will have to use in the root of your project. It's totally necessary that you use this component in the root of your project because it has to exist in a component that it's always alive.
 This component will have to wrap the other components you have in the root of your project, for example:
 
-```
+```javascript
 import { RestoreOfflineActions } from 'sync-offline-actions';
 import actions from '@redux/some/actions';
 
@@ -75,7 +75,7 @@ Each section has actions associated. Every action will have a `name` (We will se
 
 This is a function to save the moments, actions or ocurrencys that will be dispatched later. Here is an example of using:
 
-```
+```javascript
 // actions.js
 
 import { saveActionToBeSync } from 'sync-offline-actions';
@@ -115,15 +115,15 @@ This tools are a plus for this library, but they are not related with the real f
 
 This is a HOC to ask for the state of the connection. Here is an example of using:
 
-```
-import { withNetInfo } from 'sync-offline-actions';
+```javascript
+import { withNetInfo } from "sync-offline-actions";
 
-class SomeComponent extends Component{
- /*some code*/
- someMethod = () => {
-  const { isConnected } = this.props;
-  /*Do something*/
- }
+class SomeComponent extends Component {
+  /*some code*/
+  someMethod = () => {
+    const { isConnected } = this.props;
+    /*Do something*/
+  };
 }
 
 export default withNetInfo(SomeComponent);
@@ -135,13 +135,13 @@ The prop `isConnected` will be injected as a prop of `SomeComponent` because of 
 
 This is a CustomHook with the same functionality of `withNetInfo`, example of using:
 
-```
-import { netInfo } from 'sync-offline-actions';
+```javascript
+import { netInfo } from "sync-offline-actions";
 
 const SomeFunction = () => {
- const isConnected = netInfo();
- // More of the function
-}
+  const isConnected = netInfo();
+  // More of the function
+};
 ```
 
 Then, isConnected will be updated with the last changes of the connection.
