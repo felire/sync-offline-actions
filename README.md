@@ -46,24 +46,24 @@ import actions from '@redux/some/actions';
 
 // Render/return
     <RestoreOfflineActions
-      actions={[
+      sections={[
         { generalCondition: /* Condition of something */, actions: { name: 'login', associatedAction: actions.login } }
       ]}>
         <AppNavigator />
   </RestoreOfflineActions>
 ```
 
-The prop `actions` is totally obligatory to use this. Let's see the structure:
+The prop `sections` is totally obligatory to use this. Let's see the structure:
 
 You will pass an array of Sections of your app. Each section could have multiple actions that you want to dispatch if they have happened.
 For example, imagine that I want to set some actions for the section of `Authorization` of my app and some actions for the section of `App`.
 I will set the condition for each section in the `generalCondition` value. I will have an array like this:
 
 ```
-[
+sections={[
    { generalCondition: /* Condition to know if the user is not logged in */, actions: [{ name: 'someAction', associatedAction: actions.someAction }] },
-   { generalCondition: /* Condition to know if the user is logged in */, actions: [{ name: 'otherAction', associatedAction: actions.otherAction }, {                                                                                     name: 'otherAction2', associatedAction: actions.otherAction2 }] }
-]
+   { generalCondition: /* Condition to know if the user is logged in */, actions: [{ name: 'otherAction', associatedAction: actions.otherAction }, {name: 'otherAction2', associatedAction: actions.otherAction2 }] }
+]}
 
 ```
 
@@ -109,6 +109,8 @@ The second argument will be an array of `arguments`, when the connection be rest
 
 #### withNetInfo
 
+This is a HOC
+
 #### netInfo
 
 ## Thanks to
@@ -131,7 +133,7 @@ This project was created by [Felipe Rodriguez Esturo](https://github.com/felire)
 
 ## License
 
-**redux-recompose** is available under the MIT [license](LICENSE).
+**sync-offline-actions** is available under the MIT [license](LICENSE).
 
     Copyright (c) 2020 Felipe Rodriguez Esturo <felipe.rodriguez@wolox.com.ar>
 

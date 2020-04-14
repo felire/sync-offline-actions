@@ -7,11 +7,11 @@ import { getItems, removeAll } from '../services/offlineActions';
 
 import { flatten } from './utils';
 
-const restoreActions = async (actions, dispatch) => {
+const restoreActions = async (sections, dispatch) => {
   const pendingActions = await getItems();
   if (!pendingActions) return;
   const actionsToDispatch = flatten(
-    actions.filter(action => action.generalCondition).map(action => action.actions)
+    sections.filter(section => section.generalCondition).map(section => section.actions)
   ).map(action => {
     const offlineActionsForThisAction = pendingActions.filter(
       offlineAction => action.name === offlineAction.name
@@ -34,16 +34,16 @@ class RestoreConnectionComponent extends Component {
   };
 
   componentDidMount() {
-    const { dispatch, actions } = this.props;
+    const { dispatch, sections } = this.props;
     NetInfo.fetch().then(state => {
       if (state.isInternetReachable) {
-        restoreActions(actions, dispatch);
+        restoreActions(sections, dispatch);
       }
     });
     this.setState(prevState => ({
       unsubscribe: NetInfo.addEventListener(state => {
         if (!prevState.isConnected && state.isInternetReachable) {
-          restoreActions(actions, dispatch);
+          restoreActions(sections, dispatch);
         }
         this.handleChange(state.isInternetReachable);
       })
@@ -72,7 +72,7 @@ export default connect(
 )(RestoreConnectionComponent);
 
 RestoreConnectionComponent.propTypes = {
-  actions: PropTypes.arrayOf(
+  sections: PropTypes.arrayOf(
     PropTypes.shape({
       generalCondition: PropTypes.bool.isRequired,
       actions: PropTypes.arrayOf(
