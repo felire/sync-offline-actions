@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getItems, removeAll } from '../services/offlineActions';
 
@@ -69,3 +70,17 @@ export default connect(
   null,
   mapDispatchToProps
 )(RestoreConnectionComponent);
+
+RestoreConnectionComponent.propTypes = {
+  actions: PropTypes.arrayOf(
+    PropTypes.shape({
+      generalCondition: PropTypes.bool.isRequired,
+      actions: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          associatedAction: PropTypes.func.isRequired
+        })
+      )
+    })
+  )
+};
