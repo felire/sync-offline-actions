@@ -38,6 +38,7 @@
     "@babel/preset-env": "^7.5.2",
     "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.5",
+    "metro-react-native-babel-preset": "^0.59.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-import-glob": "^2.0.0",
@@ -62,12 +63,11 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-redux": "^7.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "@react-native-community/netinfo": "^5.7.0"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.9.0",
-    "@react-native-community/netinfo": "^5.7.0",
-    "metro-react-native-babel-preset": "^0.59.0",
     "prop-types": "^15.7.2"
   }
 }
