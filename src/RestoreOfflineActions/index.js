@@ -4,30 +4,29 @@ import { connect } from 'react-redux';
 
 import { getItems, removeAll } from '../services/offlineActions';
 
+import { flatten } from './utils';
+
 const restoreActions = async (actions, dispatch) => {
   const pendingActions = await getItems();
-  if (pendingActions.length === 0) return;
-  const actionsToDispatch = actions
-    .filter(action => action.generalCondition)
-    .map(action => action.actions)
-    .flat()
-    .map(action => {
-      const offlineActionsForThisAction = pendingActions.filter(
-        offlineAction => action.name === offlineAction.name
-      );
-
-      return {
-        ...action,
-        arguments: offlineActionsForThisAction.map(offlineAction => offlineAction.data)
-      };
-    });
+  if (!pendingActions) return;
+  const actionsToDispatch = flatten(
+    actions.filter(action => action.generalCondition).map(action => action.actions)
+  ).map(action => {
+    const offlineActionsForThisAction = pendingActions.filter(
+      offlineAction => action.name === offlineAction.name
+    );
+    return {
+      ...action,
+      arguments: offlineActionsForThisAction.map(offlineAction => offlineAction.data)
+    };
+  });
   actionsToDispatch.forEach(action => {
     action.arguments.forEach(argumentsList => dispatch(action.associatedAction(...argumentsList)));
   });
   await removeAll();
 };
 
-class RestoreOfflineActions extends Component {
+class RestoreConnectionComponent extends Component {
   state = {
     isConnected: null,
     unsubscribe: null
@@ -69,4 +68,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(RestoreOfflineActions);
+)(RestoreConnectionComponent);
