@@ -3,7 +3,7 @@
 
 # sync-offline-actions
 
-This is a library created to handle synchronizations with backend. Imagine that some action is dispatched and in that moment you didn't have internet, with this library you will be able to catch that ocurrency, save the information related to the action and dispatch it again when the connection is being restored.
+This is a React Native library created to handle synchronizations with backend. Imagine that some action is dispatched and in that moment you didn't have internet, with this library you will be able to catch that ocurrency, save the information related to the action and dispatch it again when the connection is being restored.
 The best part of this, it's that this library is very easy of using.
 
 ## Getting started
