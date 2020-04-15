@@ -1,8 +1,6 @@
 Change this
 ![versión npm](https://img.shields.io/npm/v/redux-recompose.svg?color=68d5f7)
 ![Download npm](https://img.shields.io/npm/dw/redux-recompose.svg?color=7551bb)
-[![codecov](https://codecov.io/gh/Wolox/redux-recompose/branch/master/graph/badge.svg)](https://codecov.io/gh/Wolox/redux-recompose)
-[![supported by](https://img.shields.io/badge/supported%20by-Wolox.💗-blue.svg)](https://www.wolox.com.ar/)
 
 # sync-offline-actions
 
@@ -73,7 +71,7 @@ Each section has actions associated. Every action will have a `name` (We will se
 
 #### saveActionToBeSync
 
-This is a function to save the moments, actions or ocurrencys that will be dispatched later. Here is an example of using:
+This is a function to save the moments, actions or ocurrencys that will be dispatched later. Here are some examples of using:
 
 ```javascript
 // actions.js
@@ -86,7 +84,7 @@ import { saveActionToBeSync } from 'sync-offline-actions';
 
 saveActionToBeSync('someAction', [arg1, arg2, arg3]);
 
-//Thunk Action
+//Thunk Action example
 
 function myThunkActionCreator(id, someValue) {
  return async (dispatch, getState) => {
@@ -95,7 +93,7 @@ function myThunkActionCreator(id, someValue) {
   try {
       response = myAjaxLib.post("/someEndpoint", {id, data: someValue});
   } catch(error) {
-      saveActionToBeSync('someThunkAction', [id, someValue]); // here we register the failed event
+      saveActionToBeSync('someThunkAction', [id, someValue]); // here we register the failed event that want to dispatch when the connection is restored
       dispatch({type : "REQUEST_FAILED", error});
   }
   dispatch({type: "REQUEST_SUCCEEDED", payload: response});
