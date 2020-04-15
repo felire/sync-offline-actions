@@ -86,6 +86,22 @@ import { saveActionToBeSync } from 'sync-offline-actions';
 
 saveActionToBeSync('someAction', [arg1, arg2, arg3]);
 
+//Thunk Action
+
+function myThunkActionCreator(id, someValue) {
+ return async (dispatch, getState) => {
+  dispatch({type : "REQUEST_STARTED"};
+  let response;
+  try {
+      response = myAjaxLib.post("/someEndpoint", {id, data: someValue});
+  } catch(error) {
+      saveActionToBeSync('someThunkAction', [id, someValue]); // here we register the failed event
+      dispatch({type : "REQUEST_FAILED", error});
+  }
+  dispatch({type: "REQUEST_SUCCEEDED", payload: response});
+ }
+}
+
 // redux-recompose example
 
 login: (authData: AuthData) => ({
@@ -131,15 +147,15 @@ export default withNetInfo(SomeComponent);
 
 The prop `isConnected` will be injected as a prop of `SomeComponent` because of the HOC withNetInfo, the prop will be updated with the network changes.
 
-#### netInfo
+#### useNetInfo
 
 This is a CustomHook with the same functionality of `withNetInfo`, example of using:
 
 ```javascript
-import { netInfo } from "sync-offline-actions";
+import { useNetInfo } from "sync-offline-actions";
 
 const SomeFunction = () => {
-  const isConnected = netInfo();
+  const isConnected = useNetInfo();
   // More of the function
 };
 ```

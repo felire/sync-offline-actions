@@ -29,7 +29,7 @@ export const withNetInfo = WrappedComponent => {
   return NetInfoComponent;
 };
 
-export const netInfo = () => {
+export const useNetInfo = () => {
   const [isConnected, setIsConnected] = useState(null);
 
   useEffect(() => {
