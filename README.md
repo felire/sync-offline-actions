@@ -120,6 +120,22 @@ login: (authData: AuthData) => ({
 The first argument of the method will be the name you used before to declare the actions of the sections in `RestoreOfflineActions` component.
 The second argument will be an array of `arguments`, when the connection be restored, the `associatedAction` associated to the `name` of the first argument will be called with the list of arguments of the second argument. It's more simple than it looks.
 
+### Recomendation
+
+We recommend you to have a constant file where you can save the names of the actions so you can have those names more organized, something like this:
+
+```javascript
+// some constant file
+export const OFFLINE_ACTION_NAMES = {
+  SOME_ACTION: "someAction",
+  OTHER_ACTION: "otherAction",
+};
+```
+
+### Important
+
+All the ocurrencys will be deleted after a connection is restored and some actions are dispatched. It doesn't mather is the actions of some sections weren't dispatched, they will be deleted anyway. Please, let us know through an issue if you are not agree with this behaviour.
+
 ### More tools
 
 This tools are a plus for this library, but they are not related with the real functionality of this, they could help you to make your work easier.

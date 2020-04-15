@@ -33,17 +33,17 @@ class RestoreConnectionComponent extends Component {
     unsubscribe: null
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dispatch, sections } = this.props;
-    NetInfo.fetch().then(state => {
+    await NetInfo.fetch().then(async state => {
       if (state.isInternetReachable) {
-        restoreActions(sections, dispatch);
+        await restoreActions(sections, dispatch);
       }
     });
     this.setState(prevState => ({
-      unsubscribe: NetInfo.addEventListener(state => {
+      unsubscribe: NetInfo.addEventListener(async state => {
         if (!prevState.isConnected && state.isInternetReachable) {
-          restoreActions(sections, dispatch);
+          await restoreActions(sections, dispatch);
         }
         this.handleChange(state.isInternetReachable);
       })
