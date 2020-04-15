@@ -1,6 +1,6 @@
 {
   "name": "sync-offline-actions",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Library to synchronize actions with backend when the connection is restored",
   "engines": {
     "node": ">=6.0.0"
