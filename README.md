@@ -120,7 +120,7 @@ login: (authData: AuthData) => ({
 The first argument of the method will be the name you used before to declare the actions of the sections in `RestoreOfflineActions` component.
 The second argument will be an array of `arguments`, when the connection be restored, the `associatedAction` associated to the `name` of the first argument will be called with the list of arguments of the second argument. It's more simple than it looks.
 
-### Recomendation
+### Recommendation
 
 We recommend you to have a constant file where you can save the names of the actions so you can have those names more organized, something like this:
 
