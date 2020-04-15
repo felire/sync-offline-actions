@@ -16,6 +16,8 @@ The best part of this, it's that this library is very easy of using.
 
 `@react-native-community/netinfo` -> You will have to install this library before, here are the steps: [Net Info](https://github.com/react-native-community/react-native-netinfo)
 
+`@react-native-community/async-storage`
+
 ### Install the library
 
 ```
