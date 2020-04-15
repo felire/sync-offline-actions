@@ -1,6 +1,5 @@
-Change this
-![versión npm](https://img.shields.io/npm/v/redux-recompose.svg?color=68d5f7)
-![Download npm](https://img.shields.io/npm/dw/redux-recompose.svg?color=7551bb)
+![versión npm](https://img.shields.io/npm/v/sync-offline-actions.svg?color=68d5f7)
+![Download npm](https://img.shields.io/npm/dw/sync-offline-actions.svg?color=7551bb)
 
 # sync-offline-actions
 
